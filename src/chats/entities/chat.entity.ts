@@ -19,6 +19,9 @@ export class Chat {
   @Column()
   amount: number;
 
+  @Column({ nullable: true })
+  name: string;
+
   @OneToMany(() => Message, (message) => message.chat)
   messages: Message[];
 }

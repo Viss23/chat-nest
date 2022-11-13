@@ -1,3 +1,4 @@
+import { timestamp } from 'rxjs';
 import { Chat } from 'src/chats/entities/chat.entity';
 import { Message } from 'src/messages/entities/message.entity';
 import {
@@ -19,6 +20,12 @@ export class User {
 
   @Column()
   pass: number;
+
+  @Column({ default: false })
+  isOnline: boolean;
+
+  @Column('timestamp', { nullable: true })
+  lastUpdate: Date;
 
   @ManyToMany(() => Chat, (chat) => chat.users)
   @JoinTable()
